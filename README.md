@@ -1,4 +1,16 @@
 # Documento de Requerimientos de software *CaricaToons*
+
+ <div display:flex>
+
+<img align="left" src="https://github.com/ElisamaCalva/DDI_INTEGRADORA_CaricaToons/blob/main/Frontend/Logos/LogoTEAM.png" alt="LogoTeam" width="300px">
+     
+    
+<img aling="right" src="https://github.com/ElisamaCalva/DDI_INTEGRADORA_CaricaToons/blob/main/Frontend/Logos/LogoAPP.png" alt="LogoApp" width="300px" >
+   
+</div
+
+
+ 
 ## Historial de Versiones
 
 | Fecha      | Versión  |  Autor   | Organización | Descripción |
