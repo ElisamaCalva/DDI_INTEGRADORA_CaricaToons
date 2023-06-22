@@ -60,6 +60,25 @@ El objetivo es que, al implementar dicha aplicación de recomendación de animes
 
 4. 	La aplicación enviará notificaciones al usuario cuando se estrenen animes.
 
+## Requerimientos Funcionales
+
+Descripción:
+
+
+Prioridad: Alta
+
+
+Comportamiento esperado:
+
+
+Requerimientos funcionales:
+- REQ-1:
+- REQ-2:
+- REQ-3:
+
+
+
+
 
 
 
