@@ -1,13 +1,8 @@
 # Documento de Requerimientos de software *Carica-Toons*
 
-<div display:flex>
 
-<img align="left" src="https://github.com/ElisamaCalva/DDI_INTEGRADORA_CaricaToons/blob/main/Frontend/Logos/LogoTeam.png" alt="LogoTeam" width="200px">
-
-<h3><text aling="center" > &nbsp;&nbsp;&nbsp;Documento de Requerimientos de Software&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
-<img aling="right" src="https://github.com/ElisamaCalva/DDI_INTEGRADORA_CaricaToons/blob/main/Frontend/Logos/LogoApp.png" alt="LogoApp" width="200px" >
-
-</div
+<div align="center">
+ <img src="https://github.com/ElisamaCalva/DDI_INTEGRADORA_CaricaToons/blob/main/Documentacion/ahvrr-ec1p5.svg"> </div>
 
 
 
@@ -38,14 +33,15 @@
 |Fabricio Guzmán Vite   | DB Manager   | Carica-Toons  |11/06/2023    |   |
 
 ## Propósito 
-Carica-Toons versión 1.0 es una aplicación que funciona a través de comandos de voz, proporcionando recomendaciones de animes en base a su género, popularidad, estudio, fecha de emisión, capítulos, categorías, temporadas y tendencias actuales.
-En este documento se hará el análisis de los requerimientos de software necesarios para el desarrollo e implementación de la aplicación.
+<p align="justify"> Carica-Toons versión 1.0 es una aplicación que funciona a través de comandos de voz, proporcionando recomendaciones de animes en base a su género, popularidad, estudio, fecha de emisión, capítulos, categorías, temporadas y tendencias actuales.
+En este documento se hará el análisis de los requerimientos de software necesarios para el desarrollo e implementación de la aplicación.</p>
 
 ## Alcance del producto / Software 
 
-Desarrollar una aplicación de comandos de voz que realice recomendaciones de animes con base a las especificaciones dadas por el usuario, este proyecto está enfocado para el público en general y orientado al área de entretenimiento y ocio.
+<p align="justify"> Desarrollar una aplicación de comandos de voz que realice recomendaciones de animes con base a las especificaciones dadas por el usuario, este proyecto está enfocado para el público en general y orientado al área de entretenimiento y ocio.</p>
 
-El objetivo es que, al implementar dicha aplicación de recomendación de animes, los usuarios realicen búsquedas en las que se les proporcionaran animes de acuerdo a sus preferencias, estratégicamente la empresa hará un análisis para conocer cuales son los animes que más les agradan a los usuarios y basarnos en ellos para recomendar animes relacionados, de esta manera obtener a más clientes potenciales.
+<p align="justify">El objetivo es que, al implementar dicha aplicación de recomendación de animes, los usuarios realicen búsquedas en las que se les proporcionaran animes de acuerdo a sus preferencias, estratégicamente la empresa hará un análisis para conocer cuales son los animes que más les agradan a los usuarios y basarnos en ellos para recomendar animes relacionados, de esta manera obtener a más clientes potenciales.
+</p>
 
 ## Funcionalidades del producto
 
