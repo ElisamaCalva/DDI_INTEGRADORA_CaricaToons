@@ -44,6 +44,7 @@ En este documento se hará el análisis de los requerimientos de software necesa
 </p>
 
 ## Funcionalidades del producto
+<p align="justify"> Proporcian un conjunto de factores y elementos relativos a la interacción del usuario, generando una percepción positiva en la experiencia del usuario al utilizar nuestra aplicación.</p>
 
 1. La aplicación mostrará un menú en el que se mostrarán las clasificaciones
     - Genero
@@ -57,22 +58,33 @@ En este documento se hará el análisis de los requerimientos de software necesa
 4. 	La aplicación enviará notificaciones al usuario cuando se estrenen animes.
 
 ## Requerimientos Funcionales
+1. **REQ-1:** La aplicación permitirá la visualización del menú de inicio, en el cuál se mostrarán las clasificaciones de animes: **Genero, recientes, populares y mejor calificación.** 
 
-Descripción:
+2. **REQ-2:** Al seleccionar la clasificación *Genero*, se visualizara los diferentes generos de animes incluidos en la aplicación:
+    - Romance
+    - Terror
+    - Gore
+    - Aventura
+    - Shonen
 
-
-Prioridad: Alta
-
-
-Comportamiento esperado:
-
-
-Requerimientos funcionales:
-- REQ-1:
-- REQ-2:
-- REQ-3:
+     
+ Al seleccionar un genero, se mostrarán los animes incluidos en dicho genero, con información relacionada al número de temporadas y capitulos. 
 
 
+3. **REQ-3:** Al seleccionar la clasificaciín *Populares*, se visualizaran los animes más populares con información relacionada al número de temporadas y capitulos.
+4. **REQ-4:** Al seleccionar la clasificación *Recientes*, se visualizarán los animes más recientes con información relacionada al número de temporadas y capitulos.
+5. **REQ-5:** Al seleccionar la clasificación *Mejor calificación*, se visualizarán los animes mejores calificados con información relacionada al número de temporadas y capitulos y su puntuación (número de estrellas).
+6. **REQ-6:** Al seleccionar un anime, se mostrará una sinopsis del mismo en la que se incluirán links de plataformas en donde puedes ver dicho anime.
+
+
+## Requerimientos No Funcionales
+1. La aplicación debe estar disponible cuando sea necesario.
+2. Los datos modificados en la base de datos deben ser actualizados para todos los usuarios que acceden en menos de 10 segundos.
+3. La aplicación debe ser fácil de mantener y actualizar.
+4. La aplicación debera ser intuitiva para el usuario.
+5. La aplicación debe ser confiable y cumplir con los requisitos del usuario.
+
+## Reglas de Negocio
 
 
 
