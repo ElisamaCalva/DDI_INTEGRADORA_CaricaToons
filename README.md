@@ -78,6 +78,7 @@ En este documento se hará el análisis de los requerimientos de software necesa
 
 
 ## Requerimientos No Funcionales
+
 1. La aplicación debe estar disponible cuando sea necesario.
 2. Los datos modificados en la base de datos deben ser actualizados para todos los usuarios que acceden en menos de 10 segundos.
 3. La aplicación debe ser fácil de mantener y actualizar.
@@ -85,9 +86,10 @@ En este documento se hará el análisis de los requerimientos de software necesa
 5. La aplicación debe ser confiable y cumplir con los requisitos del usuario.
 
 ## Reglas de Negocio
-
-
-
+1. El usuario deberá usar la aplicación correctamente para que esta funcione de una manera adecuada.
+2. Los cambios en la base de datos serán realizados únicamente cuando se registe un porcentaje bajo de usuarios haciendo uso de la aplicación.
+4. Se realizarán respaldos en la base de datos siempre y cuando se realizen cambios significativos en la misma.
+5. Se realizarán analisis estadisticos con el fin de mantener actualizado el catálogo de animes.
 
 
           
