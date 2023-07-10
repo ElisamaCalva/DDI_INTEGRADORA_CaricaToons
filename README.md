@@ -91,6 +91,46 @@ En este documento se hará el análisis de los requerimientos de software necesa
 4. Se realizarán respaldos en la base de datos siempre y cuando se realizen cambios significativos en la misma.
 5. Se realizarán analisis estadisticos con el fin de mantener actualizado el catálogo de animes.
 
+## Clases y características de usuario
+1. Usuarios Principales:
+    - Usuarios Finales: Son los usuarios finales que interactúan directamente con la aplicación de voz. Pueden tener diferentes niveles de familiaridad con la tecnología y diferentes habilidades de interacción por voz.
+    - Administradores: Si la aplicación de voz requiere administración o configuración, puede haber usuarios con privilegios especiales para realizar estas tareas.
+2. Usuarios de Perfil:
+    - Usuarios Registrados: Aquellos que han creado una cuenta en la aplicación de voz y tienen perfiles individuales.
+    - Invitados: Usuarios que utilizan la aplicación sin una cuenta registrada.
+3. Características de Usuario:
+    - Habilidades de Interacción por Voz: Algunos usuarios pueden tener diferentes niveles de experiencia o habilidades en la interacción por voz. Esto puede variar desde principiantes hasta expertos en el uso de comandos de voz.
+    - Preferencias de Configuración: Los usuarios pueden tener preferencias específicas en cuanto a configuración de idioma, voz, nivel de volumen, etc.
+    - Perfiles de Usuario: Los usuarios pueden tener perfiles de usuario con información personalizada, preferencias y configuraciones guardadas.
+4. Experiencia de Usuario:
+    - Navegación por Voz: Los usuarios pueden utilizar comandos de voz para navegar por la aplicación, acceder a diferentes funciones o realizar acciones específicas.
+    - Retroalimentación por Voz: La aplicación puede proporcionar retroalimentación auditiva en forma de respuestas de voz o indicaciones para guiar a los usuarios durante su interacción.
+    - Personalización de la Experiencia: La aplicación puede adaptarse y personalizarse según las preferencias y comportamientos de los usuarios, brindando una experiencia más individualizada.
+  
+ ## Entorno operativo
+1. Sistema Operativo: La aplicación de voz esta diseñada para funcionar en diferentes sistemas operativos, como Android, Windows, Linux, entre otros. El sistema operativo proporciona el entorno en el que se ejecuta la aplicación y brinda acceso a los recursos del dispositivo.
+
+2. Plataforma de Desarrollo: La aplicación utiliza el entorno de desarrollo integrado oficial para la plataforma Android **Android Studio** (para Android), esta plataforma proporciona herramientas, bibliotecas y entornos de desarrollo integrados para crear y compilar la aplicación.
+
+3. APIs: La aplicación consume la API (FastAPI) para habilitar funcionalidades adicionales.
+
+4. Conectividad de Red: Las aplicación requiere conectividad de red para accede, enviar y recibir datos de voz, y realizar operaciones de comunicación en tiempo real.
+
+## Requerimientos de interfaces externas
+
+**Interfaz para Wear Os**
+<div align="center">
+ <img src=https://github.com/ElisamaCalva/DDI_INTEGRADORA_CaricaToons/blob/main/Documentacion/smartwatch.png> </div>
+
+- Al iniciar la aplicació, el usuario visualizará la pantalla de bienvenida (interfaz con el logo de la aplicación)
+- El usuario puede seleccionar cualquier clasificación de anime
+- El usuario puede seleccionar el anime de su interés.
+- Se mostrará la pantalla con información relacionada al animé seleccionado por el usuario.
+- Se cuenta con el botón de regresar para ir a la pantalla anterior.
+ 
+**Interfaz para Smart Tv**
+
+## Diagrama de Arquitectura
 
           
 
