@@ -97,35 +97,33 @@ En este documento se hará el análisis de los requerimientos de software necesa
 
 
 ## Clases y características de usuario
-1. Usuarios Principales:
+1. **Usuarios Principales:**
     - Usuarios Finales: Son los usuarios finales que interactúan directamente con la aplicación de voz. Pueden tener diferentes niveles de familiaridad con la tecnología y diferentes habilidades de interacción por voz.
     - Administradores: Si la aplicación de voz requiere administración o configuración, puede haber usuarios con privilegios especiales para realizar estas tareas.
-2. Usuarios de Perfil:
+2. **Usuarios de Perfil:**
     - Usuarios Registrados: Aquellos que han creado una cuenta en la aplicación de voz y tienen perfiles individuales.
     - Invitados: Usuarios que utilizan la aplicación sin una cuenta registrada.
-3. Características de Usuario:
+3. **Características de Usuario:**
     - Habilidades de Interacción por Voz: Algunos usuarios pueden tener diferentes niveles de experiencia o habilidades en la interacción por voz. Esto puede variar desde principiantes hasta expertos en el uso de comandos de voz.
     - Preferencias de Configuración: Los usuarios pueden tener preferencias específicas en cuanto a configuración de idioma, voz, nivel de volumen, etc.
     - Perfiles de Usuario: Los usuarios pueden tener perfiles de usuario con información personalizada, preferencias y configuraciones guardadas.
-4. Experiencia de Usuario:
+4. **Experiencia de Usuario:**
     - Navegación por Voz: Los usuarios pueden utilizar comandos de voz para navegar por la aplicación, acceder a diferentes funciones o realizar acciones específicas.
     - Retroalimentación por Voz: La aplicación puede proporcionar retroalimentación auditiva en forma de respuestas de voz o indicaciones para guiar a los usuarios durante su interacción.
     - Personalización de la Experiencia: La aplicación puede adaptarse y personalizarse según las preferencias y comportamientos de los usuarios, brindando una experiencia más individualizada.
   
  ## Entorno operativo
-1. Sistema Operativo: La aplicación esta diseñada para funcionar en diferentes sistemas operativos, como Android y Windows.  El sistema operativo proporciona el entorno en el que se ejecuta la aplicación y brinda acceso a los recursos del dispositivo.
+1. **Sistema Operativo:** La aplicación esta diseñada para funcionar en diferentes sistemas operativos, como Android y Windows.  El sistema operativo proporciona el entorno en el que se ejecuta la aplicación y brinda acceso a los recursos del dispositivo.
 
-2. Plataforma de Desarrollo: La aplicación utiliza el entorno de desarrollo integrado oficial para la plataforma Android **Android Studio** (para Android), esta plataforma proporciona herramientas, bibliotecas y entornos de desarrollo integrados para crear y compilar la aplicación.
+2. **Plataforma de Desarrollo:** La aplicación utiliza el entorno de desarrollo integrado oficial para la plataforma Android **Android Studio** (para Android), esta plataforma proporciona herramientas, bibliotecas y entornos de desarrollo integrados para crear y compilar la aplicación.
 
-3. APIs: La aplicación consume la API (FastAPI) para habilitar funcionalidades adicionales.
+3. **APIs:** La aplicación consume la API (FastAPI) para habilitar funcionalidades adicionales.
    
    **WearOS** : El entorno operativo en el que se desenvolverá la app Wear OS ofrece una plataforma adaptada para dispositivos portátiles con funcionalidades específicas y una interfaz de usuario diseñada para su uso en pantallas pequeñas.
  
    **Web**: Puede ser accedida y utilizada en una amplia gama de dispositivos, incluyendo computadoras de escritorio, laptops, tabletas y teléfonos móviles. Los usuarios pueden acceder a la aplicación a través de un navegador web en estos dispositivos.
  
    **Voice Assistant Alexa**: Los usuarios interactúan con la aplicación a través de comandos de voz.
-
-
 
 
 ## Requerimientos de interfaces externas
