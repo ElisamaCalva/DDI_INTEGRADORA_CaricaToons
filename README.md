@@ -91,6 +91,11 @@ En este documento se hará el análisis de los requerimientos de software necesa
 4. Se realizarán respaldos en la base de datos siempre y cuando se realizen cambios significativos en la misma.
 5. Se realizarán analisis estadisticos con el fin de mantener actualizado el catálogo de animes.
 
+## Diagrama de Arquitectura
+<div align="center">
+ <img src=https://github.com/ElisamaCalva/DDI_INTEGRADORA_CaricaToons/blob/main/Documentacion/Arquitectura%20carica-toons.png> </div>
+
+
 ## Clases y características de usuario
 1. Usuarios Principales:
     - Usuarios Finales: Son los usuarios finales que interactúan directamente con la aplicación de voz. Pueden tener diferentes niveles de familiaridad con la tecnología y diferentes habilidades de interacción por voz.
@@ -108,29 +113,41 @@ En este documento se hará el análisis de los requerimientos de software necesa
     - Personalización de la Experiencia: La aplicación puede adaptarse y personalizarse según las preferencias y comportamientos de los usuarios, brindando una experiencia más individualizada.
   
  ## Entorno operativo
-1. Sistema Operativo: La aplicación de voz esta diseñada para funcionar en diferentes sistemas operativos, como Android, Windows, Linux, entre otros. El sistema operativo proporciona el entorno en el que se ejecuta la aplicación y brinda acceso a los recursos del dispositivo.
+1. Sistema Operativo: La aplicación esta diseñada para funcionar en diferentes sistemas operativos, como Android y Windows.  El sistema operativo proporciona el entorno en el que se ejecuta la aplicación y brinda acceso a los recursos del dispositivo.
 
 2. Plataforma de Desarrollo: La aplicación utiliza el entorno de desarrollo integrado oficial para la plataforma Android **Android Studio** (para Android), esta plataforma proporciona herramientas, bibliotecas y entornos de desarrollo integrados para crear y compilar la aplicación.
 
 3. APIs: La aplicación consume la API (FastAPI) para habilitar funcionalidades adicionales.
+   
+   **WearOS** : El entorno operativo en el que se desenvolverá la app Wear OS ofrece una plataforma adaptada para dispositivos portátiles con funcionalidades específicas y una interfaz de usuario diseñada para su uso en pantallas pequeñas.
+ 
+   **Web**: Puede ser accedida y utilizada en una amplia gama de dispositivos, incluyendo computadoras de escritorio, laptops, tabletas y teléfonos móviles. Los usuarios pueden acceder a la aplicación a través de un navegador web en estos dispositivos.
+ 
+   **Voice Assistant Alexa**: Los usuarios interactúan con la aplicación a través de comandos de voz.
 
-4. Conectividad de Red: Las aplicación requiere conectividad de red para accede, enviar y recibir datos de voz, y realizar operaciones de comunicación en tiempo real.
+
+
 
 ## Requerimientos de interfaces externas
 
 **Interfaz para Wear Os**
-<div align="center">
- <img src=https://github.com/ElisamaCalva/DDI_INTEGRADORA_CaricaToons/blob/main/Documentacion/smartwatch.png> </div>
+| Interfaz de Usuario (UI) | Descripción |
+| :----------------------------------: | :----------------------------------: |
+|<img src="https://github.com/ElisamaCalva/DDI_INTEGRADORA_CaricaToons/blob/main/Documentacion/smartwatch_1.png" alt="Inicio" width="110" />|  **Bienvenida** <br>Al iniciar la aplicación, el usuario visualizará la pantalla de bienvenida<br> (interfaz con el logo de la aplicación)|
+|<img src="https://github.com/ElisamaCalva/DDI_INTEGRADORA_CaricaToons/blob/main/Documentacion/smartwatch_2.png" alt="Inicio" width="110" />|  **Clasificaciones** <br>El usuario puede seleccionar cualquier <br> clasificación de anime|
+|<img src="https://github.com/ElisamaCalva/DDI_INTEGRADORA_CaricaToons/blob/main/Documentacion/smartwatch_3.png" alt="Inicio" width="110" />|  **Animes Recomendados** <br>Se mostrará la pantalla con información relacionada <br>al anime seleccionado por el usuario|
 
-- Al iniciar la aplicació, el usuario visualizará la pantalla de bienvenida (interfaz con el logo de la aplicación)
-- El usuario puede seleccionar cualquier clasificación de anime
-- El usuario puede seleccionar el anime de su interés.
-- Se mostrará la pantalla con información relacionada al animé seleccionado por el usuario.
-- Se cuenta con el botón de regresar para ir a la pantalla anterior.
+
  
 **Interfaz para Smart Tv**
-
-## Diagrama de Arquitectura
+| Interfaz de Usuario (UI) | Descripción |
+| :----------------------------------: | :----------------------------------: |
+|<img src="https://github.com/ElisamaCalva/DDI_INTEGRADORA_CaricaToons/blob/main/Documentacion/tv_1.png" alt="Inicio" width="180" />|  **Bienvenida** <br>Al iniciar la aplicación, el usuario visualizará la pantalla de bienvenida<br> en la que se le invita a registrarse en la aplicación|
+|<img src="https://github.com/ElisamaCalva/DDI_INTEGRADORA_CaricaToons/blob/main/Documentacion/tv_2.png" alt="Inicio" width="180" />|  **Inicio de Sesión** <br>El usuario podrá iniciar sesión en la aplicación <br>con su correo electronico y contraseña|
+|<img src="https://github.com/ElisamaCalva/DDI_INTEGRADORA_CaricaToons/blob/main/Documentacion/tv_3.png" alt="Inicio" width="180" />|  **Registro** <br>Si el usuario no tiene una cuenta de acceso a la aplicación<br> podrá registrarse |
+|<img src="https://github.com/ElisamaCalva/DDI_INTEGRADORA_CaricaToons/blob/main/Documentacion/tv_4.png" alt="Inicio" width="180" />|  **Clasificaciones** <br>El usuario puede seleccionar cualquier <br> clasificación de anime de su interés|
+|<img src="https://github.com/ElisamaCalva/DDI_INTEGRADORA_CaricaToons/blob/main/Documentacion/tv_5.png" alt="Inicio" width="180" />|  **Animes Recomendados** <br>Al iniciar la aplicación, el usuario visualizará la pantalla de bienvenida<br> en la que se le invita a registrarse en la aplicación|
+|<img src="https://github.com/ElisamaCalva/DDI_INTEGRADORA_CaricaToons/blob/main/Documentacion/tv_6.png" alt="Inicio" width="180" />|  **Calificación de Anime** <br>Se mostrará la pantalla con información relacionada <br>al anime seleccionado por el usuario|
 
           
 
