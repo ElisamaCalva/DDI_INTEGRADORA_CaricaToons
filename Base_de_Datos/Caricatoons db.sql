@@ -134,20 +134,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Caricatoons`.`Anime_Favoritos`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `Caricatoons`.`Anime_Favoritos` ;
-
-CREATE TABLE IF NOT EXISTS `Caricatoons`.`Anime_Favoritos` (
-  `idAnime_Favoritos` INT NOT NULL AUTO_INCREMENT,
-  `Anime_id` INT NOT NULL,
-  `Miembro_id` INT NOT NULL,
-  PRIMARY KEY (`idAnime_Favoritos`),
-  UNIQUE INDEX `idAnime_Favoritos_UNIQUE` (`idAnime_Favoritos` ASC) VISIBLE)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `Caricatoons`.`Anime_Genero`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Caricatoons`.`Anime_Genero` ;
