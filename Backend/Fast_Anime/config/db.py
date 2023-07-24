@@ -1,4 +1,4 @@
 from sqlalchemy import create_engine, MetaData
-engine = create_engine("mysql+pymysql://root:1234@localhost:3306/caricatoons")
+engine = create_engine("mysql+pymysql://root:1234@localhost:3306/caricatoons_procedures")
 meta = MetaData()
 conn = engine.connect()
