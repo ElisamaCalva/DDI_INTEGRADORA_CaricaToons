@@ -1,13 +1,13 @@
-from fastapi import APIRouter
+from fastapi import APIRouter,HTTPException
 from config.db import conn
 from models.tbb_anime import anime as AnimeModel
 from schemas.tbb_anime import tbb_anime
 from fastapi.responses import JSONResponse
-from datetime import date
+
 
 router = APIRouter()
 
-@router.get('/getAll')
+@router.get('/getAll', tags=["Anime"])
 def obtenerAnimes():
     animes_list_dicts = []
     animes_list_tuples = conn.execute(AnimeModel.select()).fetchall()
@@ -39,7 +39,7 @@ def obtenerAnimes():
     return JSONResponse(content=animes_list_dicts)
 
 
-@router.post('/insert')
+@router.post('/insert', tags=["Anime"])
 def insertAnime(anime: tbb_anime):
     conn.execute(AnimeModel.insert().values(**anime.dict()))
     conn.commit()
@@ -48,7 +48,7 @@ def insertAnime(anime: tbb_anime):
     }
     return res
 
-@router.get('/obtenerUnoPorId/{id}')
+@router.get('/obtenerUnoPorId/{id}', tags=["Anime"])
 def obtenerAnimePorId(id: int):
     anime_tuple = conn.execute(AnimeModel.select().where(AnimeModel.c.idAnime == id)).first()
     if anime_tuple is not None:
@@ -73,7 +73,7 @@ def obtenerAnimePorId(id: int):
         }
         return res
 
-@router.put('/update/{id}')
+@router.put('/update/{id}', tags=["Anime"])
 def actualizarAnimePorId(id: int, anime: tbb_anime):
     res = obtenerAnimePorId(id)
     if res.get("status") == "No existe el anime ingresado":
@@ -88,7 +88,7 @@ def actualizarAnimePorId(id: int, anime: tbb_anime):
         }
     return resp
 
-@router.delete('/delete/{id}')
+@router.delete('/delete/{id}', tags=["Anime"])
 def eliminarAnime(id: int):
     res = obtenerAnimePorId(id)
     if res.get("status") == "No existe el anime ingresado":
@@ -102,7 +102,7 @@ def eliminarAnime(id: int):
         }
     return res
 
-@router.delete('/deletebase/{id}')
+@router.delete('/deletebase/{id}', tags=["Anime"])
 def eliminarAnime(id: int):
     # Verificar si el anime existe por su ID
     anime = conn.execute(AnimeModel.select().where(AnimeModel.c.idAnime == id)).first()
