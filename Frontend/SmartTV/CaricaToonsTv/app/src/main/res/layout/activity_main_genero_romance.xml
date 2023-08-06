@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_browse_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo"
+    tools:deviceIds="tv"
+    tools:ignore="MergeRootFrame">
+
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/goldentime" />
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="500dp"
+        android:src="@drawable/given" />
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="235dp"
+        android:layout_marginLeft="860dp"
+        android:src="@drawable/salir" />
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/koami" />
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="500dp"
+        android:src="@drawable/lasquin" />
+
+
+
+
+
+</FrameLayout>
