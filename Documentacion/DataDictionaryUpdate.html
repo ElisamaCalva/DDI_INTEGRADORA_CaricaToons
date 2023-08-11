@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="WB DataDic" />
+    <meta name="description" content="caricatoons_procedures Data Dictionary." />
+    <title>caricatoons_procedures Data Dictionary</title>
+    <style type="text/css">
+    table{
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    abbr{
+        cursor: help;
+    }
+    table, td, th{
+        border-style: solid;
+        border-width: 1px;
+    }
+    table caption{
+        font-size: 120%;
+        font-weight: bold;
+    }
+    caption{
+        color: black;
+    }
+    td, th{
+        border-color: silver;
+    }
+    tr:hover{
+        color: #333;
+        background-color: #ffd8d8;
+    }
+    th{
+        background-color: rgb(247, 114, 225);
+    }
+    td{
+        color: rgb(59, 59, 59);
+    }
+    ul{
+        font-style: verdana;
+    }
+    #title-sect{
+        color: rgb(247, 40, 143);
+        text-align: right;
+    }
+    #title-sect2{
+        color: rgb(247, 40, 143);
+       
+    }
+    .proj-desc{
+        text-align: right;
+    }
+    </style>
+</head>
+<body>
+<div id="title-sect">
+<h1>Carica-Toons<br> Data Dictionay</h1>
+<p>
+<em>2023-08-11</em>
+</p>
+<p class="proj-desc">
+<em></em>
+</p>
+</div>
+<div id="title-sect2">
+<h2 >Alphabetic Index</h2></div>
+<ul>
+<li><a href='#tbb_anime'>tbb_anime</a></li>
+<li><a href='#tbb_episodio'>tbb_episodio</a></li>
+<li><a href='#tbb_genero'>tbb_genero</a></li>
+<li><a href='#tbb_miembro'>tbb_miembro</a></li>
+<li><a href='#tbb_origen'>tbb_origen</a></li>
+<li><a href='#tbb_temporada'>tbb_temporada</a></li>
+<li><a href='#tbb_usuario'>tbb_usuario</a></li>
+<li><a href='#tbc_anime_genero'>tbc_anime_genero</a></li>
+<li><a href='#tbc_lista_animes'>tbc_lista_animes</a></li>
+<li><a href='#tbc_rating'>tbc_rating</a></li>
+<li><a href='#tbi_bitacora'>tbi_bitacora</a></li>
+</ul>
+
+<table id='tbb_anime'>
+<caption>tbb_anime</caption>
+<tr><td colspan='11'>La tabla <b>"tbb_anime"</b> Contiene: <b>Total_episodios</b> (Todos aun cuando sean dos temporadas)<br>
+    <b>Estatus</b> (Si este esta en emision, pausado o terminado) <br><b>Estudio</b> (El principal estudio que lo este produciendo)
+     <br><b>Director </b>(Director principal) 
+     <br><b>Fecha_Final </b>(Opcional si este aun esta en emision) 
+     <br><b>Fecha_incio</b> (Cuando este se estreno)
+     <br> <b>Rating_total </b>(Promedio de las calificaciones de los miembros) 
+     <br><b>Sinopsis</b> (Resumen corto de la serie)
+     <br> <b>Temporadas</b> (Cantidad de temporadas, si es ova solo una) 
+     <br><b>Tipo</b> (Si es ova, tv, pelicula)</td></tr><tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>idAnime</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Identificador unico de anime<br><b>Naturaleza:</b> Cuantitativo<br>
+        <b>Composicion: </b>{0-N}<br><b>Dominio:</b> Numeros enteros positivos</td>
+</tr>
+<tr>
+    <td>Nombre</td>
+    <td>VARCHAR(45)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Nombre del anime<br>
+        <b>Naturaleza:</b> Cualitativo<br><b>Composicion:</b> {""}<br><b>Dominio:</b> Cadena de caracteres</td>
+</tr>
+<tr>
+    <td>Total_Episodios</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Cantidad total de episodios de cada anime<br><b>Naturaleza:</b> Cuantitativo<br><b>Composicion: </b>{0-N}<br><b>Dominio:</b> Numeros enteros positivos</td>
+</tr>
+<tr>
+    <td>Estatus</td>
+    <td>ENUM('Emision', 'Pausado', 'Terminado')</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Estatus en el que se encuentra el anime<br><b>Naturaleza:</b> Cualitativo<br><b>Composicion: </b>{"Emision, "Pausa", "Terminado"}<br> <b>Dominio:</b> Cadena cuyo valor se elige de una lista de valores especifica del campo</td>
+</tr>
+<tr>
+    <td>Estudio</td>
+    <td>VARCHAR(45)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Empresa encargada de hacer la animacion<br><b>Naturaleza:</b> Cualitativo<br><b>Composicion:</b> {""}<br><b>Dominio:</b> Cadena de caracteres</td>
+</tr>
+<tr>
+    <td>Temporadas</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Cantidad de temporadas que tiene el anime<br><b>Naturaleza:</b> Cuantitativo<br><b>Composicion:</b> {0-N}<br><b>Dominio:</b> Numeros enteros positivos</td>
+</tr>
+<tr>
+    <td>Director</td>
+    <td>VARCHAR(45)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Nombre del director del anime<br>Naturaleza: Cualitativo<br>Composicion: {""}<br>Dominio: Cadena de caracteres</td>
+</tr>
+<tr>
+    <td>Fecha_Inicio</td>
+    <td>DATE</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Fecha en la que inicio el anime<br>Naturaleza: Cuantitativo<br>Composicion: {"AAAA-MM-DD"}<br>Dominio: Valores que contienen una fecha</td>
+</tr>
+<tr>
+    <td>Fecha_Final</td>
+    <td>DATE</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Fecha en la que fianalizo el anime<br>Naturaleza: Cuantitativo<br>Composicion: {"AAAA-MM-DD"}<br>Dominio: Valores que contienen una fecha</td>
+</tr>
+<tr>
+    <td>Rating_total</td>
+    <td>DECIMAL(5,2)</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Porcentaje de audiencia<br>Naturaleza: Cuantitativo<br>Composicion: {m,d}<br>Dominio: Numeros de coma flotante</td>
+</tr>
+<tr>
+    <td>Sinopsis</td>
+    <td>TEXT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Resumen general del anime<br>Naturaleza: Cualitativo<br>Composicion: {""}<br>Dominio: Cadena de caracteres</td>
+</tr>
+<tr>
+    <td>Tipo</td>
+    <td>ENUM('TV', 'Ova', 'Pelicula')</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Tipo de anime<br>Naturaleza: Cualitativo<br>Composicion: {"Tv, "Ova", "Pelicula"}<br>Dominio: Cadena cuyo valor se elige de una lista  de valores especifica del campo</td>
+</tr>
+<tr>
+    <td>Estatus_Anime</td>
+    <td>BIT(1)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>b'1'</td>
+    <td>Indica si el estatus del anime es activo o inactivo<br>Naturaleza: Cualitativo<br>Composicion: { 0 y 1}<br>Dominio: valores verdadero y falso</td>
+</tr>
+<tr>
+    <td>Fecha_Creacion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>CURRENT_TIMESTAMP</td>
+    <td>Fecha en la que se creo el anime<br>Naturaleza: Cuantitativo<br>Composicion: {AAAA-MM-DD HH:MM:SS"}<br>Dominio: Valores que contienen fecha y hora en el formato</td>
+</tr>
+<tr>
+    <td>Fecha_Actualizacion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Fecha en la que se creo el anime<br>Naturaleza: Cuantitativo<br>Composicion: {AAAA-MM-DD HH:MM:SS"}<br>Dominio: Valores que contienen fecha y hora en el formato</td>
+</tr>
+<table id='tbb_episodio'>
+<caption>tbb_episodio</caption>
+<tr><td colspan='11'>La "tbb_episodio" contiene informacion relativa a los episodios de cada anime</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>idEpisodio</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Identificador unico del episodio <br>Naturaleza: Cuantitativo<br>Composicion: {0-N}<br>Dominio: Numeros enteros positivos</td>
+</tr>
+<tr>
+    <td>Nombre</td>
+    <td>VARCHAR(45)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Nombre del episodio<br>Naturaleza: Cualitativo<br>Composicion:{""}<br>Dominio: Cadena de caracteres</td>
+</tr>
+<tr>
+    <td>Estreno</td>
+    <td>DATE</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Fecha en la que se estreno el episodio<br>Naturaleza: Cuantitativo<br>Composicion: {"AAAA-MM-DD"}<br>Dominio: Valores que contienen una fecha</td>
+</tr>
+<tr>
+    <td>idTemporada</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Identificador unico de temporada<br>Naturaleza: Cuantitativo<br>Composicion: {0-N}<br>Dominio: Numeros enteros positivos</td>
+</tr>
+<tr>
+    <td>idAnime</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Identificador unico de anime<br>Naturaleza: Cuantitativo<br>Composicion: {0-N}<br>Dominio: Numeros enteros positivos</td>
+</tr>
+<tr>
+    <td>Fecha_Actualizacion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Fecha de actualizacion del episodio<br>Naturaleza: Cuantitativo<br>Composicion: {AAAA-MM-DD HH:MM:SS"}<br>Dominio: Valores que contienen fecha y hora en el formato</td>
+</tr>
+<tr>
+    <td>Estatus_Anime</td>
+    <td>BIT(1)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>b'1'</td>
+    <td>Indica si el estatus del anime es activo o inactivo<br>Naturaleza: Cualitativo<br>Composicion: { 0 y 1}<br>Dominio: valores verdadero y falso</td>
+</tr>
+<tr>
+    <td>Fecha_Creacion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>CURRENT_TIMESTAMP</td>
+    <td>Fecha en la que se creo el anime<br>Naturaleza: Cuantitativo<br>Composicion: {AAAA-MM-DD HH:MM:SS"}<br>Dominio: Valores que contienen fecha y hora en el formato</td>
+</tr>
+<table id='tbb_genero'>
+<caption>tbb_genero</caption>
+<tr><td colspan='11'>La "tbb_genero" contiene informacion relativa a los generos a los que pertenece cada anime</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>idGenero</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Identificador unico del genero <br>Naturaleza: Cuantitativo<br>Composicion: {0-N}<br>Dominio: Numeros enteros positivos</td>
+</tr>
+<tr>
+    <td>Nombre</td>
+    <td>VARCHAR(45)</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Nombre del episodio<br>Naturaleza: Cualitativo<br>Composicion: {""}<br>Dominio: Cadena de caracteres</td>
+</tr>
+<tr>
+    <td>Subgenero</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>subgenero del anime<br>Naturaleza: Cuantitativo<br>Composicion: {0-N}<br>Dominio: Numeros enteros positivos</td>
+</tr>
+<tr>
+    <td>Estatus</td>
+    <td>BIT(1)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>b'1'</td>
+    <td>Indica si el estatus del anime es activo o inactivo<br>Naturaleza: Cualitativo<br>Composicion: { 0 y 1}<br>Dominio: valores verdadero y falso</td>
+</tr>
+<tr>
+    <td>Fecha_Creacion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>CURRENT_TIMESTAMP</td>
+    <td>Fecha en la que se creo el anime<br>Naturaleza: Cuantitativo<br>Composicion: {AAAA-MM-DD HH:MM:SS"}<br>Dominio: Valores que contienen fecha y hora en el formato</td>
+</tr>
+<tr>
+    <td>Fecha_Actualizacion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Fecha de actualizacion del anime<br>Naturaleza: Cuantitativo<br>Composicion: {AAAA-MM-DD HH:MM:SS"}<br>Dominio: Valores que contienen fecha y hora en el formato</td>
+</tr>
+<table id='tbb_miembro'>
+<caption>tbb_miembro</caption>
+<tr><td colspan='11'>La tabla "tbb_miembro" contiene informacion relativa a los los miembros registrados en la base de datos</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>idMiembro</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Identificador unico de cada miebro<br>Naturaleza: Cuantitativo<br>Composicion: {0-N}<br>Dominio: Numeros enteros positivos</td>
+</tr>
+<tr>
+    <td>Usuario_id</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Identificador unico de cada usuario <br>Naturaleza: Cuantitativo<br>Composicion: {0-N}<br>Dominio: Numeros enteros positivos</td>
+</tr>
+<tr>
+    <td>Estatus</td>
+    <td>BIT(1)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>b'1'</td>
+    <td>Indica si el estatus del anime es activo o inactivo<br>Naturaleza: Cualitativo<br>Composicion: { 0 y 1}<br>Dominio: valores verdadero y falso</td>
+</tr>
+<tr>
+    <td>Fecha_Creacion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>CURRENT_TIMESTAMP</td>
+    <td>Fecha en la que se creo el anime<br>Naturaleza: Cuantitativo<br>Composicion: {AAAA-MM-DD HH:MM:SS"}<br>Dominio: Valores que contienen fecha y hora en el formato</td>
+</tr>
+<tr>
+    <td>Fecha_Actualizacion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Fecha de actualizacion del anime<br>Naturaleza: Cuantitativo<br>Composicion: {AAAA-MM-DD HH:MM:SS"}<br>Dominio: Valores que contienen fecha y hora en el formato</td>
+</tr>
+<table id='tbb_origen'>
+<caption>tbb_origen</caption>
+<tr><td colspan='11'>Origen\n\nContiene:\n\nAutor (Escritor, guionista principal)\nNombre(Si el nombre cambia)\nTipo (Novela ligera, Novela web, Manga)</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>idOrigen</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Identificador unico del origen del anime<br>Naturaleza: Cuantitativo<br>Composicion: {0-N}<br>Dominio: Numeros enteros positivos</td>
+</tr>
+<tr>
+    <td>Autor</td>
+    <td>VARCHAR(45)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Nombre del Autor del anime<br>Naturaleza: Cualitativo<br>Composicion: {""}<br>Dominio: Cadena de caracteres</td>
+</tr>
+<tr>
+    <td>Nombre</td>
+    <td>VARCHAR(45)</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Si el nombre cambia<br>Naturaleza: Cualitativo<br>Composicion: {""}<br>Dominio: Cadena de caracteres</td>
+</tr>
+<tr>
+    <td>Tipo</td>
+    <td>ENUM('NovelaL', 'NovelaW', 'Manga')</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Tipo de anime<br>Naturaleza: Cualitativo<br>Composicion: {"NovelaL", "NovelaW", "Manga"}<br>Dominio: Cadena cuyo valor se elige de una lista de valores especifica del campo</td>
+</tr>
+<tr>
+    <td>idAnime</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Identificador unico de anime<br>Naturaleza: Cuantitativo<br>Composicion: {0-N}<br>Dominio: Numeros enteros positivos</td>
+</tr>
+<tr>
+    <td>Estatus_Anime</td>
+    <td>BIT(1)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>b'1'</td>
+    <td>Indica si el estatus del anime es activo o inactivo<br>Naturaleza: Cualitativo<br>Composicion: { 0 y 1}<br>Dominio: valores verdadero y falso</td>
+</tr>
+<tr>
+    <td>Fecha_Creacion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>CURRENT_TIMESTAMP</td>
+    <td>Fecha en la que se creo el anime<br>Naturaleza: Cuantitativo<br>Composicion: {AAAA-MM-DD HH:MM:SS"}<br>Dominio: Valores que contienen fecha y hora en el formato</td>
+</tr>
+<tr>
+    <td>Fecha_Actualizacion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Fecha de actualizacion del anime<br>Naturaleza: Cuantitativo<br>Composicion: {AAAA-MM-DD HH:MM:SS"}<br>Dominio: Valores que contienen fecha y hora en el formato</td>
+</tr>
+<table id='tbb_temporada'>
+<caption>tbb_temporada</caption>
+<tr><td colspan='11'>La tabla "tbb_temporada" contiene informacion relativa a las temporadas que tiene cada anime </td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>idTemporada</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Identificador unico de las temporadas del anime<br>Naturaleza: Cuantitativo<br>Composicion: {0-N}<br>Dominio: Numeros enteros positivos</td>
+</tr>
+<tr>
+    <td>Numero</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Numero de temporadas<br>Naturaleza: Cuantitativo<br>Composicion: {0-N}<br>Dominio: Numeros enteros positivos</td>
+</tr>
+<tr>
+    <td>Fecha_Emision</td>
+    <td>DATE</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Fecha de emision de la temporada <br>Naturaleza: Cuantitativo<br>Composicion: {"AAAA-MM-DD"}<br>Dominio: Valores que contienen una fecha</td>
+</tr>
+<tr>
+    <td>Fecha_Termino</td>
+    <td>DATE</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Fecha de termino de la temporada <br>Naturaleza: Cuantitativo<br>Composicion: {"AAAA-MM-DD"}<br>Dominio: Valores que contienen una fecha</td>
+</tr>
+<tr>
+    <td>Sinopsis</td>
+    <td>VARCHAR(100)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Resumen general del la temporadae<br>Naturaleza: Cualitativo<br>Composicion: {""}<br>Dominio: Cadena de caracteres</td>
+</tr>
+<tr>
+    <td>Rating_total</td>
+    <td>DECIMAL(5,2)</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Porcentaje de audiencia<br>Naturaleza: Cuantitativo<br>Composicion: {m,d}<br>Dominio: Numeros de coma flotante</td>
+</tr>
+<tr>
+    <td>idAnime</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Identificador unico de anime<br>Naturaleza: Cuantitativo<br>Composicion: {0-N}<br>Dominio: Numeros enteros positivos</td>
+</tr>
+<tr>
+    <td>Estatus_Anime</td>
+    <td>BIT(1)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>b'1'</td>
+    <td>Indica si el estatus del anime es activo o inactivo<br>Naturaleza: Cualitativo<br>Composicion: { 0 y 1}<br>Dominio: valores verdadero y falso</td>
+</tr>
+<tr>
+    <td>Fecha_Creacion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>CURRENT_TIMESTAMP</td>
+    <td>Fecha en la que se creo el anime<br>Naturaleza: Cuantitativo<br>Composicion: {AAAA-MM-DD HH:MM:SS"}<br>Dominio: Valores que contienen fecha y hora en el formato</td>
+</tr>
+<tr>
+    <td>Fecha_Actualizacion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Fecha de actualizacion del anime<br>Naturaleza: Cuantitativo<br>Composicion: {AAAA-MM-DD HH:MM:SS"}<br>Dominio: Valores que contienen fecha y hora en el formato</td>
+</tr>
+<table id='tbb_usuario'>
+<caption>tbb_usuario</caption>
+<tr><td colspan='11'>La tabla "tbb_usuario" contiene informacion relativa a los usuarios</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>idUsuario</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Identificador unico del usuario<br>Naturaleza: Cuantitativo<br>Composicion: {0-N}<br>Dominio: Numeros enteros positivos</td>
+</tr>
+<tr>
+    <td>Nombre</td>
+    <td>VARCHAR(75)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Nombre del usuario<br>Naturaleza: Cualitativo<br>Composicion: {""}<br>Dominio: Cadena de caracteres</td>
+</tr>
+<tr>
+    <td>Email</td>
+    <td>VARCHAR(45)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Email del usuario<br>Naturaleza: Cualitativo<br>Composicion: {""}<br>Dominio: Cadena de caracteres</td>
+</tr>
+<tr>
+    <td>Contrasenia</td>
+    <td>VARCHAR(45)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>contrasenia del usuario<br>Naturaleza: Cualitativo<br>Composicion: {""}<br>Dominio: Cadena de caracteres</td>
+</tr>
+<tr>
+    <td>Nickname</td>
+    <td>VARCHAR(45)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Nickname del usuario<br>Naturaleza: Cualitativo<br>Composicion: {""}<br>Dominio: Cadena de caracteres</td>
+</tr>
+<tr>
+    <td>Genero</td>
+    <td>ENUM('Hombre', 'Mujer')</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Genero del usuario<br>Naturaleza: Cualitativo<br>Composicion: {"Hombre", "Mujer"}<br>Dominio: Cadena cuyo valor se elige de una lista de valores especifica del campo</td>
+</tr>
+<tr>
+    <td>Fecha_Nacimiento</td>
+    <td>DATE</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Fecha de nacimiento del usuario<br>Naturaleza: Cuantitativo<br>Composicion: {AAAA-MM-DD"}<br>Dominio: Valores que contienen fecha en el formato</td>
+</tr>
+<tr>
+    <td>Estatus</td>
+    <td>BIT(1)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>b'1'</td>
+    <td>Indica el status del usuario<br>Naturaleza: Cualitativo<br>Composicion: { 0 y 1}<br>Dominio: valores verdadero y falso</td>
+</tr>
+<tr>
+    <td>Fecha_Creacion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>CURRENT_TIMESTAMP</td>
+    <td>Fecha de creacion del usuario<br>Naturaleza: Cuantitativo<br>Composicion: {AAAA-MM-DD HH:MM:SS"}<br>Dominio: Valores que contienen fecha y hora en el formato</td>
+</tr>
+<tr>
+    <td>Fecha_Actualizacion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Fecha de actualizacion del usuario<br>Naturaleza: Cuantitativo<br>Composicion: {AAAA-MM-DD HH:MM:SS"}<br>Dominio: Valores que contienen fecha y hora en el formato</td>
+</tr>
+<table id='tbc_anime_genero'>
+<caption>tbc_anime_genero</caption>
+<tr><td colspan='11'>La tabla "tbc_anime_genero" contiene: Identificador unico del Anime y del Genero </td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>idAnime_Genero</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Identificador unico<br>Naturaleza: Cuantitativo<br>Composicion: {0-N}<br>Dominio: Numeros enteros positivos</td>
+</tr>
+<tr>
+    <td>Genero_id</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Identificador unico del genero<br>Naturaleza: Cuantitativo<br>Composicion: {0-N}<br>Dominio: Numeros enteros positivos</td>
+</tr>
+<tr>
+    <td>Anime_id</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Identificador unico del anime<br>Naturaleza: Cuantitativo<br>Composicion: {0-N}<br>Dominio: Numeros enteros positivos</td>
+</tr>
+<table id='tbc_lista_animes'>
+<caption>tbc_lista_animes</caption>
+<tr><td colspan='11'>La tabla "tbc_lista_animes" contiene informacion relativa a la lista de animes</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>idLista_Animes</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Identificador unico de la lista de animes<br>Naturaleza: Cuantitativo<br>Composicion: {0-N}<br>Dominio: Numeros enteros positivos</td>
+</tr>
+<tr>
+    <td>Anime_id</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Identificador unico del anime<br>Naturaleza: Cuantitativo<br>Composicion: {0-N}<br>Dominio: Numeros enteros positivos</td>
+</tr>
+<tr>
+    <td>Miembro_id</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Identificador unico de cada miebro<br>Naturaleza: Cuantitativo<br>Composicion: {0-N}<br>Dominio: Numeros enteros positivos</td>
+</tr>
+<tr>
+    <td>Favorito</td>
+    <td>BIT(1)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>b'0'</td>
+    <td>Indica si el anime es favorito<br>Naturaleza: Cualitativo<br>Composicion: { 0 y 1}<br>Dominio: valores verdadero y falso</td>
+</tr>
+<tr>
+    <td>Pendiente</td>
+    <td>BIT(1)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>b'0'</td>
+    <td>Indica si la calificacion esta pendienteo<br>Naturaleza: Cualitativo<br>Composicion: { 0 y 1}<br>Dominio: valores verdadero y falso</td>
+</tr>
+<tr>
+    <td>Estatus</td>
+    <td>BIT(1)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>b'1'</td>
+    <td>Indica el status del anime<br>Naturaleza: Cualitativo<br>Composicion: { 0 y 1}<br>Dominio: valores verdadero y falso</td>
+</tr>
+<tr>
+    <td>Fecha_Creacion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>CURRENT_TIMESTAMP</td>
+    <td>Fecha de creacion del anime<br>Naturaleza: Cuantitativo<br>Composicion: {AAAA-MM-DD HH:MM:SS"}<br>Dominio: Valores que contienen fecha y hora en el formato</td>
+</tr>
+<tr>
+    <td>Fecha_Actualizacion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Fecha de actualizacion del anime<br>Naturaleza: Cuantitativo<br>Composicion: {AAAA-MM-DD HH:MM:SS"}<br>Dominio: Valores que contienen fecha y hora en el formato</td>
+</tr>
+<table id='tbc_rating'>
+<caption>tbc_rating</caption>
+<tr><td colspan='11'>La tabla "tbc_rating" Contiene informacion relativa a la calificacion del anime</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>idRating</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Identificador unico del rating<br>Naturaleza: Cuantitativo<br>Composicion: {0-N}<br>Dominio: Numeros enteros positivos</td>
+</tr>
+<tr>
+    <td>Calificacion</td>
+    <td>DECIMAL(5,2)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>'0.00'</td>
+    <td>Calificacion del anime<br>Naturaleza: Cuantitativo<br>Composicion: {m,d}<br>Dominio: Numeros de coma flotante</td>
+</tr>
+<tr>
+    <td>Anime_id</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Identificador unico del anime<br>Naturaleza: Cuantitativo<br>Composicion: {0-N}<br>Dominio: Numeros enteros positivos</td>
+</tr>
+<tr>
+    <td>Miembro_id</td>
+    <td>INT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Identificador unico de cada miebro<br>Naturaleza: Cuantitativo<br>Composicion: {0-N}<br>Dominio: Numeros enteros positivos</td>
+</tr>
+<tr>
+    <td>Estatus</td>
+    <td>BIT(1)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>b'1'</td>
+    <td>Indica si el estatus del anime es activo o inactivo<br>Naturaleza: Cualitativo<br>Composicion: { 0 y 1}<br>Dominio: valores verdadero y falso</td>
+</tr>
+<tr>
+    <td>Fecha_Creacion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>CURRENT_TIMESTAMP</td>
+    <td>Fecha en la que se creo el anime<br>Naturaleza: Cuantitativo<br>Composicion: {AAAA-MM-DD HH:MM:SS"}<br>Dominio: Valores que contienen fecha y hora en el formato</td>
+</tr>
+<tr>
+    <td>Fecha_Actualizacion</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>NULL</td>
+    <td>Fecha de actualizacion del anime<br>Naturaleza: Cuantitativo<br>Composicion: {AAAA-MM-DD HH:MM:SS"}<br>Dominio: Valores que contienen fecha y hora en el formato</td>
+</tr>
+<table id='tbi_bitacora'>
+<caption>tbi_bitacora</caption>
+<tr><td colspan='11'>La tabla "tbi_bitacora" permite llevar un registro escrito de diversas modificaciones a la base de datos</td></tr>
+<tr>
+    <th>Column name</th>
+    <th>DataType</th>
+    <th><abbr title='Primary Key'>PK</abbr></th>
+    <th><abbr title='Not Null'>NN</abbr></th>
+    <th><abbr title='Unique'>UQ</abbr></th>
+    <th><abbr title='Binary'>BIN</abbr></th>
+    <th><abbr title='Unsigned'>UN</abbr></th>
+    <th><abbr title='Zero Fill'>ZF</abbr></th>
+    <th><abbr title='Auto Increment'>AI</abbr></th>
+    <th>Default</th>
+    <th>Comment</th>
+</tr>
+<tr>
+    <td>ID</td>
+    <td>INT</td>
+    <td>&#10004;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td></td>
+    <td>Identificador unico<br>Naturaleza: Cuantitativo<br>Composicion: {0-N}<br>Dominio: Numeros enteros positivos</td>
+</tr>
+<tr>
+    <td>usuario_bd</td>
+    <td>VARCHAR(80)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Usuario que relaiza la operacion<br>Naturaleza: Cualitativo<br>Composicion: {""}<br>Dominio: Cadena de caracteres</td>
+</tr>
+<tr>
+    <td>tabla</td>
+    <td>VARCHAR(80)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Nombre de la tabla modificada<br>Naturaleza: Cualitativo<br>Composicion: {""}<br>Dominio: Cadena de caracteres</td>
+</tr>
+<tr>
+    <td>operacion</td>
+    <td>ENUM('Create', 'Read', 'Update', 'Delete')</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Operacion realizada en la base de datos<br>Naturaleza: Cualitativo<br>Composicion: {"Create", "Read", "Update" "Delete"}<br>Dominio: Cadena cuyo valor se elige de una lista  de valores especifica del campo</td>
+</tr>
+<tr>
+    <td>descripcion_completa</td>
+    <td>TEXT</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td></td>
+    <td>Descripcion de la accion realizada<br>Naturaleza: Cualitativo<br>Composicion: {""}<br>Dominio: Cadena de caracteres</td>
+</tr>
+<tr>
+    <td>fecha_hora</td>
+    <td>DATETIME</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>CURRENT_TIMESTAMP</td>
+    <td>Fecha dela modificacion<br>Naturaleza: Cuantitativo<br>Composicion: {AAAA-MM-DD HH:MM:SS"}<br>Dominio: Valores que contienen fecha y hora en el formato</td>
+</tr>
+<tr>
+    <td>estatus</td>
+    <td>BIT(1)</td>
+    <td>&nbsp;</td>
+    <td>&#10004;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td class='attr'>&nbsp;</td>
+    <td>b'1'</td>
+    <td>Indica el estatus de la modificacion<br>Naturaleza: Cualitativo<br>Composicion: { 0 y 1}<br>Dominio: valores verdadero y falso</td>
+</tr>
+</table>
+</body>
+</html>
