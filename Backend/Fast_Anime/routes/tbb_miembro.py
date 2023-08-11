@@ -5,8 +5,8 @@ from models.tbb_miembro import miembro
 from schemas.tbb_miembro import tbb_miembro
 
 router_miembro = APIRouter()
-
-@router_miembro.get('/obtenerMiembros', response_model=list[tbb_miembro], tags=["Miembros"])
+    
+@router_miembro.get('/obtenerMiembros', tags=["Miembros"])
 def obtenerMiembros():
     miembros_list = []
 
@@ -33,34 +33,52 @@ def obtenerMiembros():
 
 @router_miembro.post('/agregarMiembro', tags=["Miembros"])
 def agregarMiembro(nuevo_miembro: tbb_miembro):
-    query = insert(miembro).values(
-        Usuario_id=nuevo_miembro.Usuario_id,
-        Estatus=nuevo_miembro.Estatus,
-        Fecha_Creacion=nuevo_miembro.Fecha_Creacion,
-        Fecha_Actualizacion=nuevo_miembro.Fecha_Actualizacion
-    )
-
     try:
+        query = miembro.insert().values(
+            Usuario_id=nuevo_miembro.Usuario_id,
+            Estatus=nuevo_miembro.Estatus,
+            Fecha_Creacion=nuevo_miembro.Fecha_Creacion,
+            Fecha_Actualizacion=nuevo_miembro.Fecha_Actualizacion
+        )
         result = conn.execute(query)
         nuevo_miembro_id = result.lastrowid
+        conn.commit()  # Confirmar la transacción
         return {"message": "Miembro agregado exitosamente", "idMiembro": nuevo_miembro_id}
     except Exception as e:
         raise HTTPException(status_code=500, detail="Error al agregar el miembro")
     
-@router_miembro.delete('/eliminarMiembro/{idMiembro}', tags=["Miembros"])
-def eliminarMiembro(idMiembro: int):
-    # Crear el objeto de cláusula WHERE para seleccionar el miembro con el idMiembro dado
-    condicion = miembro.c.idMiembro == idMiembro
-
-    # Crear el objeto de sentencia DELETE
-    query = delete(miembro).where(condicion)
-
+@router_miembro.put('/editarMiembro/{idMiembro}', tags=["Miembros"])
+def editarMiembro(idMiembro: int, miembro_data: tbb_miembro):
+    query = miembro.update().where(miembro.c.idMiembro == idMiembro).values(**miembro_data.dict())
+    
     try:
         result = conn.execute(query)
-        # Verificar si se eliminó algún miembro
         if result.rowcount == 0:
-            raise HTTPException(status_code=404, detail="No existe el miembro con el idMiembro dado")
-        
-        return {"message": "Miembro eliminado exitosamente", "idMiembro": idMiembro}
+            raise HTTPException(status_code=404, detail="Miembro no encontrado")
+        conn.commit()  # Confirmar la transacción
+        return {"message": "Miembro editado exitosamente"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Error al editar el miembro")
+
+    
+@router_miembro.delete('/eliminarMiembro/{idMiembro}', tags=["Miembros"])
+def eliminarMiembro(idMiembro: int):
+    try:
+        query = delete(miembro).where(miembro.c.idMiembro == idMiembro)
+        result = conn.execute(query)
+
+        if result.rowcount == 0:
+            raise HTTPException(status_code=404, detail="No existe el miembro ingresado")
+
+        conn.commit()
+
+        res = {
+            "status": f"Miembro con ID {idMiembro} eliminado con éxito"
+        }
+        return res
     except Exception as e:
         raise HTTPException(status_code=500, detail="Error al eliminar el miembro")
+
+
+
+

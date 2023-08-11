@@ -1,7 +1,8 @@
 from pydantic import BaseModel
 from datetime import date
 
-class tbb_episodio(BaseModel):
+class tbb_temporada(BaseModel):
+
     Numero: str
     Fecha_Emision: str
     Fecha_Termino: str

@@ -8,10 +8,14 @@ class TipoEnum(str, Enum):
     Manga = 'Manga'
 
 class tbb_origen(BaseModel):
+    idOrigen: int
     Autor:str
     Nombre:str
-    idAnime: int
-    Tipo: TipoEnum  
+    Tipo: TipoEnum 
+    idAnime: int 
     Estatus_Anime: bool
     Fecha_Creacion: date
     Fecha_Actualizacion: date
+
+class Config:
+        use_enum_values = True

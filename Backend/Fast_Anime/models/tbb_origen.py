@@ -7,9 +7,9 @@ from config.db import meta, engine
 origen = Table(
     "tbb_origen",
     meta,
-    Column("idOrigen", Integer, primary_key=True, autoincrement=True),
-    Column("Autor", String(45)),
-    Column("Nombre", String(45)),
+    Column("idOrigen", Integer, primary_key=True),
+    Column("Autor", String(450)),
+    Column("Nombre", String(450)),
     Column("Tipo", Enum('NovelaL', 'NovelaW', 'Manga')),
     Column("idAnime", Integer),
     Column("Estatus_Anime", Boolean),

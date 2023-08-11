@@ -10,7 +10,7 @@ anime_temporada = Table(
     Column("Numero", Integer),
     Column("Fecha_Emision", Date),
     Column("Fecha_Termino", Date),
-    Column("Sinopsis", String(100)),
+    Column("Sinopsis", String(1000)),
     Column("Rating_total", Float),
     Column("idAnime", Integer),
     Column("Estatus_Anime", Boolean),

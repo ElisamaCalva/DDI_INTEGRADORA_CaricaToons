@@ -1,7 +1,10 @@
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, HTTPException
 from config.db import conn
+from schemas.tbb_temporada import tbb_temporada
 from models.tbb_temporada import anime_temporada
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse 
+
+
 
 router_temporada = APIRouter()
 
@@ -24,19 +27,77 @@ def obtenerAnimesTemporada():
     return animes_temporada_list
 
 @router_temporada.post('/agregarAnimeTemporada', tags=["Temporada"])
-async def agregarAnimeTemporada(request: Request):
-    data = await request.json()
-    query = anime_temporada.insert().values(
-        Numero=data.get('Numero'),
-        Fecha_Emision=data.get('Fecha_Emision'),
-        Fecha_Termino=data.get('Fecha_Termino'),
-        Sinopsis=data.get('Sinopsis'),
-        Rating_total=data.get('Rating_total'),
-        idAnime=data.get('idAnime'),
-        Estatus_Anime=data.get('Estatus_Anime'),
-        Fecha_Creacion=data.get('Fecha_Creacion'),
-        Fecha_Actualizacion=data.get('Fecha_Actualizacion')
-    )
-    conn.execute(query)
-    return JSONResponse(content={"message": "Anime agregado exitosamente"})
+def agregarAnimeTemporada(nuevo_anime_temporada: tbb_temporada):
+    try:
+        query = anime_temporada.insert().values(
+            Numero=nuevo_anime_temporada.Numero,
+            Fecha_Emision=nuevo_anime_temporada.Fecha_Emision,
+            Fecha_Termino=nuevo_anime_temporada.Fecha_Termino,
+            Sinopsis=nuevo_anime_temporada.Sinopsis,
+            Rating_total=nuevo_anime_temporada.Rating_total,
+            idAnime=nuevo_anime_temporada.idAnime,
+            Estatus_Anime=nuevo_anime_temporada.Estatus_Anime,
+            Fecha_Creacion=nuevo_anime_temporada.Fecha_Creacion,
+            Fecha_Actualizacion=nuevo_anime_temporada.Fecha_Actualizacion
+        )
+
+        result = conn.execute(query)
+        tbb_temporada = result.lastrowid
+        conn.commit()  # Realiza el commit de la transacción
+
+        return {"message": "Anime agregado exitosamente", "idAnimeTemporada": tbb_temporada}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Error al agregar el anime a la temporada: " + str(e))
+
+@router_temporada.put('/editarAnimeTemporada/{idAnimeTemporada}', tags=["Temporada"])
+def editarAnimeTemporada(idAnimeTemporada: int, anime_temporada_data: tbb_temporada):
+    try:
+        query = (
+            anime_temporada
+            .update()
+            .where(anime_temporada.c.idAnimeTemporada == idAnimeTemporada)
+            .values(
+                Numero=anime_temporada_data.Numero,
+                Fecha_Emision=anime_temporada_data.Fecha_Emision,
+                Fecha_Termino=anime_temporada_data.Fecha_Termino,
+                Sinopsis=anime_temporada_data.Sinopsis,
+                Rating_total=anime_temporada_data.Rating_total,
+                idAnime=anime_temporada_data.idAnime,
+                Fecha_Actualizacion=anime_temporada_data.Fecha_Actualizacion
+            )
+        )
+
+        result = conn.execute(query)
+        if result.rowcount == 0:
+            raise HTTPException(status_code=404, detail="Anime en temporada no encontrado")
+
+        conn.commit()  # Realiza el commit de la transacción
+
+        return {"message": "Anime en temporada editado exitosamente"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Error al editar el anime en temporada: " + str(e))
+
+
+@router_temporada.delete('/eliminarAnimeTemporada/{idAnimeTemporada}', tags=["Temporada"])
+def eliminarAnimeTemporada(idTemporada: int):
+    query = anime_temporada.delete().where(anime_temporada.c.idTemporada == idTemporada)
+
+    try:
+        result = conn.execute(query)
+        if result.rowcount == 0:
+            raise HTTPException(status_code=404, detail="Anime en temporada no encontrado")
+
+        conn.commit()  # Realiza el commit de la transacción
+
+        return {"message": "Anime en temporada eliminado exitosamente"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Error al eliminar el anime en temporada: " + str(e))
+
+
+
+
+
+
+
+
 
