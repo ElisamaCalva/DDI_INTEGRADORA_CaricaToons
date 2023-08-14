@@ -93,7 +93,7 @@ def editarUsuario(idUsuario: int, usuario_data: tbb_usuario):
     except Exception as e:
         raise HTTPException(status_code=500, detail="Error al editar el usuario: " + str(e))
 
-@router_usuario.delete('/eliminarUsuario/{idUsuario}', tags=["Usuarios"])
+@router_usuario.delete('/eliminarUsuariobase/{idUsuario}', tags=["Usuarios"])
 def eliminarUsuario(idUsuario: int):
     try:
         # Verificar si el usuario existe antes de eliminarlo
@@ -109,3 +109,46 @@ def eliminarUsuario(idUsuario: int):
         return {"message": f"Usuario con ID {idUsuario} eliminado exitosamente"}
     except Exception as e:
         raise HTTPException(status_code=500, detail="Error al eliminar el usuario: " + str(e))
+ 
+@router_usuario.delete('/eliminarUsuario/{idUsuario}', tags=["Usuarios"])
+def desactivarUsuario(idUsuario: int):
+    try:
+        # Verificar si el usuario existe antes de desactivarlo
+        usuario_existente = conn.execute(usuario.select().where(usuario.c.idUsuario == idUsuario)).first()
+        if usuario_existente is None:
+            raise HTTPException(status_code=404, detail="El usuario no existe")
+
+        # Actualizar el campo Estatus a False para desactivar el usuario
+        query = (
+            usuario.update()
+            .where(usuario.c.idUsuario == idUsuario)
+            .values(Estatus=False)
+        )
+        conn.execute(query)
+        conn.commit()
+
+        return {"message": f"Usuario con ID {idUsuario} desactivado exitosamente"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Error al desactivar el usuario: " + str(e))
+
+
+@router_usuario.put('/activarUsuario/{idUsuario}', tags=["Usuarios"])
+def activarUsuario(idUsuario: int):
+    try:
+        # Verificar si el usuario existe antes de activarlo
+        usuario_existente = conn.execute(usuario.select().where(usuario.c.idUsuario == idUsuario)).first()
+        if usuario_existente is None:
+            raise HTTPException(status_code=404, detail="El usuario no existe")
+
+        # Actualizar el campo Estatus a True para activar el usuario
+        query = (
+            usuario.update()
+            .where(usuario.c.idUsuario == idUsuario)
+            .values(Estatus=True)
+        )
+        conn.execute(query)
+        conn.commit()
+
+        return {"message": f"Usuario con ID {idUsuario} activado exitosamente"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Error al activar el usuario: " + str(e))

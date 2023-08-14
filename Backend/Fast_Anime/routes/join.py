@@ -1,39 +1,38 @@
 from fastapi import APIRouter
 from sqlalchemy import select, join
 from config.db import conn
+from models.tbc_lista_animes import lista_animes
+from models.tbb_anime import anime
 from models.tbb_usuario import usuario
 from models.tbb_miembro import miembro
-from models.tbc_lista_animes import lista_animes
 
 router_join = APIRouter()
 
-@router_join.get('/obtenerUsuariosConAnime', tags=["Join"])
-def obtenerUsuariosConAnime():
+@router_join.get('/obtenerListaConInfo', tags=["Join animes"])
+def obtenerListaConInfo():
     query = (
         select(
-            usuario.c.idUsuario,
-            usuario.c.Nombre,
-            miembro.c.idMiembro,
-            lista_animes.c.Anime_id,
+            lista_animes.c.idLista_Animes,
+            anime.c.Nombre.label("NombreAnime"),
+            usuario.c.Nombre.label("NombrePersona")
         )
         .select_from(
-            join(usuario, miembro, usuario.c.idUsuario == miembro.c.Usuario_id)
-            .join(lista_animes, miembro.c.idMiembro == lista_animes.c.Miembro_id)
+            join(lista_animes, anime, lista_animes.c.Anime_id == anime.c.idAnime)
+            .join(miembro, miembro.c.idMiembro == lista_animes.c.Miembro_id)
+            .join(usuario, usuario.c.idUsuario == miembro.c.Usuario_id)
         )
     )
 
     result = conn.execute(query)
-    usuarios_con_anime = result.fetchall()
+    lista_con_info = result.fetchall()
 
-    usuarios_anime_list = []
-    for row in usuarios_con_anime:
-        usuario_anime_dict = {
-            "idUsuario": row.idUsuario,
-            "NombreUsuario": row.Nombre,
-            "idMiembro": row.idMiembro,
-            "Anime_id": row.Anime_id,
+    lista_info_list = []
+    for row in lista_con_info:
+        lista_info_dict = {
+            "idLista_Animes": row.idLista_Animes,
+            "NombreAnime": row.NombreAnime,
+            "NombrePersona": row.NombrePersona
         }
-        usuarios_anime_list.append(usuario_anime_dict)
+        lista_info_list.append(lista_info_dict)
 
-    return usuarios_anime_list
-
+    return lista_info_list

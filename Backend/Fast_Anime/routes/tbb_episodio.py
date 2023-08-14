@@ -106,7 +106,7 @@ def actualizarEpisodio(idEpisodio: int, episodio_data: tbb_episodio):
         raise HTTPException(status_code=500, detail="Error al editar el episodio: " + str(e))
 
 
-@router_episodio.delete('/episodio/{idEpisodio}', tags=["Episodio"])
+@router_episodio.delete('/Eliminarbase/{idEpisodio}', tags=["Episodio"])
 def eliminarEpisodio(idEpisodio: int):
     # Verificar si el episodio existe antes de eliminarlo
     episodio_existente = conn.execute(episodio.select().where(episodio.c.idEpisodio == idEpisodio))
@@ -119,3 +119,21 @@ def eliminarEpisodio(idEpisodio: int):
     conn.commit()
 
     return {"message": f"Episodio con ID {idEpisodio} eliminado exitosamente"}
+
+@router_episodio.delete('/episodio/{idEpisodio}', tags=["Episodio"])
+def eliminarEpisodio(idEpisodio: int):
+    # Verificar si el episodio existe antes de eliminarlo
+    episodio_existente = conn.execute(episodio.select().where(episodio.c.idEpisodio == idEpisodio)).fetchone()
+    if episodio_existente is None:
+        raise HTTPException(status_code=404, detail="El episodio no existe")
+
+    # Actualizar el campo Estatus_Anime a False para desactivar el episodio
+    query = (
+        episodio.update()
+        .where(episodio.c.idEpisodio == idEpisodio)
+        .values(Estatus_Anime=False)
+    )
+    conn.execute(query)
+    conn.commit()
+
+    return {"message": f"Episodio con ID {idEpisodio} desactivado exitosamente"}

@@ -78,7 +78,7 @@ def editarAnimeTemporada(idAnimeTemporada: int, anime_temporada_data: tbb_tempor
         raise HTTPException(status_code=500, detail="Error al editar el anime en temporada: " + str(e))
 
 
-@router_temporada.delete('/eliminarAnimeTemporada/{idAnimeTemporada}', tags=["Temporada"])
+@router_temporada.delete('/eliminarAnimeTemporadabase/{idAnimeTemporada}', tags=["Temporada"])
 def eliminarAnimeTemporada(idTemporada: int):
     query = anime_temporada.delete().where(anime_temporada.c.idTemporada == idTemporada)
 
@@ -94,6 +94,48 @@ def eliminarAnimeTemporada(idTemporada: int):
         raise HTTPException(status_code=500, detail="Error al eliminar el anime en temporada: " + str(e))
 
 
+@router_temporada.delete('/eliminarAnimeTemporada/{idAnimeTemporada}', tags=["Temporada"])
+def desactivarAnimeTemporada(idAnimeTemporada: int):
+    try:
+        # Verificar si el anime en temporada existe antes de desactivarlo
+        anime_temporada_existente = conn.execute(anime_temporada.select().where(anime_temporada.c.idTemporada == idAnimeTemporada)).first()
+        if anime_temporada_existente is None:
+            raise HTTPException(status_code=404, detail="Anime en temporada no encontrado")
+
+        # Actualizar el campo Estatus_Anime a False para desactivar el anime en temporada
+        query = (
+            anime_temporada.update()
+            .where(anime_temporada.c.idTemporada == idAnimeTemporada)
+            .values(Estatus_Anime=False)
+        )
+        conn.execute(query)
+        conn.commit()
+
+        return {"message": f"Anime en temporada con ID {idAnimeTemporada} desactivado exitosamente"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Error al desactivar el anime en temporada: " + str(e))
+
+
+@router_temporada.put('/activarAnimeTemporada/{idAnimeTemporada}', tags=["Temporada"])
+def activarAnimeTemporada(idAnimeTemporada: int):
+    try:
+        # Verificar si el anime en temporada existe antes de activarlo
+        anime_temporada_existente = conn.execute(anime_temporada.select().where(anime_temporada.c.idTemporada == idAnimeTemporada)).first()
+        if anime_temporada_existente is None:
+            raise HTTPException(status_code=404, detail="Anime en temporada no encontrado")
+
+        # Actualizar el campo Estatus_Anime a True para activar el anime en temporada
+        query = (
+            anime_temporada.update()
+            .where(anime_temporada.c.idTemporada == idAnimeTemporada)
+            .values(Estatus_Anime=True)
+        )
+        conn.execute(query)
+        conn.commit()
+
+        return {"message": f"Anime en temporada con ID {idAnimeTemporada} activado exitosamente"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Error al activar el anime en temporada: " + str(e))
 
 
 

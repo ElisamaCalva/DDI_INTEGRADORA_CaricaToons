@@ -102,3 +102,35 @@ def eliminarCalificacion(idRating: int):
         return {"message": "Calificación eliminada exitosamente"}
     except Exception as e:
         raise HTTPException(status_code=500, detail="Error al eliminar la calificación: " + str(e))
+
+@router_rating.put('/activarCalificacion/{idRating}', tags=["Rating"])
+def activarCalificacion(idRating: int):
+    return cambiarEstatusCalificacion(idRating, activar=True)
+
+@router_rating.put('/desactivarCalificacion/{idRating}', tags=["Rating"])
+def desactivarCalificacion(idRating: int):
+    return cambiarEstatusCalificacion(idRating, activar=False)
+
+def cambiarEstatusCalificacion(idRating: int, activar: bool):
+    try:
+        # Crear la consulta para actualizar el campo Estatus de la calificación
+        query = (
+            update(rating)
+            .where(rating.c.idRating == idRating)
+            .values(Estatus=activar)
+        )
+
+        result = conn.execute(query)
+        if result.rowcount == 0:
+            raise HTTPException(status_code=404, detail="Calificación no encontrada")
+
+        conn.commit()
+
+        if activar:
+            message = "Calificación activada exitosamente"
+        else:
+            message = "Calificación desactivada exitosamente"
+
+        return {"message": message}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Error al cambiar el estatus de la calificación: " + str(e))

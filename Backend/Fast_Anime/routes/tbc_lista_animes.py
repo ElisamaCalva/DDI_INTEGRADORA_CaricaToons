@@ -84,7 +84,7 @@ def editarAnimeEnLista(idLista_Animes: int, favorito: bool, pendiente: bool):
     except Exception as e:
         raise HTTPException(status_code=500, detail="Error al actualizar la información del anime en lista: " + str(e))
     
-@router_lista_animes.delete('/eliminarAnimeDeLista/{idLista_Animes}', tags=["Lista Animes"])
+@router_lista_animes.delete('/eliminarAnimeDeListabase/{idLista_Animes}', tags=["Lista Animes"])
 def eliminarAnimeDeLista(idLista_Animes: int):
     try:
         query = lista_animes.delete().where(lista_animes.c.idLista_Animes == idLista_Animes)
@@ -98,3 +98,27 @@ def eliminarAnimeDeLista(idLista_Animes: int):
         return {"message": "Anime eliminado de la lista exitosamente"}
     except Exception as e:
         raise HTTPException(status_code=500, detail="Error al eliminar el anime de la lista: " + str(e))
+
+@router_lista_animes.put('/cambiarEstatusAnimeEnLista/{idLista_Animes}', tags=["Lista Animes"])
+def cambiarEstatusAnimeEnLista(idLista_Animes: int, activar: bool):
+    try:
+        query = (
+            update(lista_animes)
+            .where(lista_animes.c.idLista_Animes == idLista_Animes)
+            .values(Estatus=activar)
+        )
+
+        result = conn.execute(query)
+        if result.rowcount == 0:
+            raise HTTPException(status_code=404, detail="Anime en lista no encontrado")
+
+        conn.commit()
+
+        if activar:
+            message = "Anime activado en la lista exitosamente"
+        else:
+            message = "Anime desactivado en la lista exitosamente"
+
+        return {"message": message}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Error al cambiar el estatus del anime en la lista: " + str(e))

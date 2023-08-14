@@ -66,7 +66,7 @@ def actualizarGeneroPorId(idGenero: int, genero_data: tbb_genero):
     return res
 
 # Ruta DELETE para eliminar un registro por su ID
-@router_genero.delete('/genero/{idGenero}', tags=["Genero"])
+@router_genero.delete('/generobase/{idGenero}', tags=["Genero"])
 def eliminarGenero(idGenero: int):
     genero_tuple = conn.execute(genero.select().where(genero.c.idGenero == idGenero)).first()
     if genero_tuple is None:
@@ -81,3 +81,25 @@ def eliminarGenero(idGenero: int):
     }
     return res
 
+@router_genero.delete('/genero/{idGenero}', tags=["Genero"])
+def desactivarGenero(idGenero: int):
+    """
+    Desactiva un género por su ID (cambia Estatus a False).
+    """
+    genero_tuple = conn.execute(genero.select().where(genero.c.idGenero == idGenero)).first()
+    if genero_tuple is None:
+        raise HTTPException(status_code=404, detail="No existe el género ingresado")
+
+    # Actualizar el campo Estatus a False para desactivar el género
+    query = (
+        genero.update()
+        .where(genero.c.idGenero == idGenero)
+        .values(Estatus=False)
+    )
+    conn.execute(query)
+    conn.commit()
+
+    res = {
+        "status": f"Género con ID {idGenero} desactivado con éxito"
+    }
+    return res

@@ -86,7 +86,7 @@ def editarOrigen(idOrigen: int, origen_data: tbb_origen):
     except Exception as e:
         raise HTTPException(status_code=500, detail="Error al editar el origen: " + str(e))
 
-@router_origen.delete('/eliminarOrigen/{idOrigen}', tags=["Origenes"])
+@router_origen.delete('/eliminarOrigenbase/{idOrigen}', tags=["Origenes"])
 def eliminarOrigen(idOrigen: int):
     try:
         # Verificar si el origen existe antes de eliminarlo
@@ -102,3 +102,25 @@ def eliminarOrigen(idOrigen: int):
         return {"message": f"Origen con ID {idOrigen} eliminado exitosamente"}
     except Exception as e:
         raise HTTPException(status_code=500, detail="Error al eliminar el origen: " + str(e))
+    
+@router_origen.delete('/eliminarOrigen/{idOrigen}', tags=["Origenes"])
+def desactivarOrigen(idOrigen: int):
+    try:
+        # Verificar si el origen existe antes de eliminarlo
+        origen_existente = conn.execute(origen.select().where(origen.c.idOrigen == idOrigen)).first()
+        if origen_existente is None:
+            raise HTTPException(status_code=404, detail="El origen no existe")
+
+        # Actualizar el campo Estatus_Anime a False para desactivar el origen
+        query = (
+            origen.update()
+            .where(origen.c.idOrigen == idOrigen)
+            .values(Estatus_Anime=False)
+        )
+        conn.execute(query)
+        conn.commit()
+
+        return {"message": f"Origen con ID {idOrigen} desactivado exitosamente"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Error al desactivar el origen: " + str(e))
+

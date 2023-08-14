@@ -61,7 +61,7 @@ def editarMiembro(idMiembro: int, miembro_data: tbb_miembro):
         raise HTTPException(status_code=500, detail="Error al editar el miembro")
 
     
-@router_miembro.delete('/eliminarMiembro/{idMiembro}', tags=["Miembros"])
+@router_miembro.delete('/eliminarMiembrobase/{idMiembro}', tags=["Miembros"])
 def eliminarMiembro(idMiembro: int):
     try:
         query = delete(miembro).where(miembro.c.idMiembro == idMiembro)
@@ -80,5 +80,28 @@ def eliminarMiembro(idMiembro: int):
         raise HTTPException(status_code=500, detail="Error al eliminar el miembro")
 
 
+@router_miembro.delete('/eliminarMiembro/{idMiembro}', tags=["Miembros"])
+def desactivarMiembro(idMiembro: int):
+    try:
+        # Verificar si el miembro existe antes de eliminarlo
+        miembro_existente = conn.execute(miembro.select().where(miembro.c.idMiembro == idMiembro)).fetchone()
+        if miembro_existente is None:
+            raise HTTPException(status_code=404, detail="No existe el miembro ingresado")
+
+        # Actualizar el campo Estatus a False para desactivar el miembro
+        query = (
+            miembro.update()
+            .where(miembro.c.idMiembro == idMiembro)
+            .values(Estatus=False)
+        )
+        conn.execute(query)
+        conn.commit()
+
+        res = {
+            "status": f"Miembro con ID {idMiembro} desactivado con éxito"
+        }
+        return res
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="Error al desactivar el miembro")
 
 
