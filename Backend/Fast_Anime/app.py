@@ -12,6 +12,8 @@ from routes.tbc_rating import router_rating
 from routes.tbi_bitacora import router_bitacora
 from routes.join import router_join
 from routes.joinepisodios import router_join_episodios
+from routes.vw_usuarios_rating import router_vw_usuarios_rating
+from routes.recomendacion import router_recomendacion_animes
 
 app = FastAPI()
 
@@ -28,3 +30,5 @@ app.include_router(router_rating)
 app.include_router(router_join)
 app.include_router(router_bitacora)
 app.include_router(router_join_episodios)
+app.include_router(router_vw_usuarios_rating)
+app.include_router(router_recomendacion_animes)
